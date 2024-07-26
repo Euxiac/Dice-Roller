@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="icon" href="./resources/favicon.ico" type="image/x-icon" />
+  </head>
+  <body>
+    <main>
+      <nav>
+        <h1>DICE ROLLER</h1>
+      </nav>
+      <section id="resultTray">
+        <p>roll history</p>
+        <h3>Total:</h3>
+        <h2>00</h2>
+
+        <span>
+          <button class="tertiaryButton" type="button">reset rolls</button>
+        </span>
+      </section>
+      <section id="diceTray">
+        <div class="diceEntry">
+          <h3>D4</h3>
+          <svg width="80" height="80" id="D4">
+            <polygon
+              xmlns="http://www.w3.org/2000/svg"
+              points="14.748537,-26.80224 52.708496,49.117676 -23.211421,49.117676 14.748537,-26.80224"
+              transform="matrix(.81665 0 0 0.81665 28.460617 28.143617)"
+              fill="none"
+              stroke="#000"
+              stroke-width="4"
+              stroke-linejoin="bevel"
+            />
+            <text
+              xmlns="http://www.w3.org/2000/svg"
+              transform="translate(32.139294 44.814663)"
+              stroke-width="0"
+            >
+              <tspan y="0" font-weight="400" stroke-width="0">
+                <![CDATA[ 00 ]]>
+              </tspan>
+            </text>
+          </svg>
+          <button class="secondaryButton" type="button">roll</button>
+        </div>
+        <div class="diceEntry">
+          <h3>D6</h3>
+          <svg width="80" height="80" id="D6">
+            <rect
+              xmlns="http://www.w3.org/2000/svg"
+              width="55"
+              height="55"
+              transform="translate(13 13)"
+              fill="none"
+              stroke="#000"
+              stroke-width="3.5"
+              stroke-linejoin="bevel"
+            />
+            <text
+              xmlns="http://www.w3.org/2000/svg"
+              transform="translate(32.139294 44.814663)"
+              stroke-width="0"
+            >
+              <tspan y="0" font-weight="400" stroke-width="0">
+                <![CDATA[ 00 ]]>
+              </tspan>
+            </text>
+          </svg>
+          <button class="secondaryButton" type="button">roll</button>
+        </div>
+        <div class="diceEntry">
+          <h3>D8</h3>
+          <svg width="80" height="80" id="D8">
+            <polygon
+              xmlns="http://www.w3.org/2000/svg"
+              points="14.659938,-26.80224 52.531297,-7.587644 52.531297,30.841548 14.659938,50.056144 -23.211421,30.841548 -23.211421,-7.587644 14.659938,-26.80224"
+              transform="matrix(.739345 0 0 0.747819 29.482468 31.842868)"
+              fill="none"
+              stroke="#000"
+              stroke-width="4"
+              stroke-linejoin="bevel"
+            />
+            <text
+              xmlns="http://www.w3.org/2000/svg"
+              transform="translate(32.139294 44.814663)"
+              stroke-width="0"
+            >
+              <tspan y="0" font-weight="400" stroke-width="0">
+                <![CDATA[ 00 ]]>
+              </tspan>
+            </text>
+          </svg>
+          <button class="secondaryButton" type="button">roll</button>
+        </div>
+        <div class="diceEntry">
+          <h3>D10</h3>
+          <svg width="80" height="80" id="D10">
+            <polygon
+              xmlns="http://www.w3.org/2000/svg"
+              points="14.659938,-26.80224 58.390015,11.626952 14.659938,50.056144 -29.070139,11.626952 14.659938,-26.80224"
+              transform="matrix(.739345 0 0 0.747819 29.482468 31.842868)"
+              fill="none"
+              stroke="#000"
+              stroke-width="4"
+              stroke-linejoin="bevel"
+            />
+            <text
+              xmlns="http://www.w3.org/2000/svg"
+              transform="translate(32.139294 44.814663)"
+              stroke-width="0"
+            >
+              <tspan y="0" font-weight="400" stroke-width="0">
+                <![CDATA[ 00 ]]>
+              </tspan>
+            </text>
+          </svg>
+          <button class="secondaryButton" type="button">roll</button>
+        </div>
+        <div class="diceEntry">
+          <h3>D12</h3>
+          <svg width="80" height="80" id="D12">
+            <polygon
+              xmlns="http://www.w3.org/2000/svg"
+              points="13.831348,-26.80224 39.023146,-19.651414 54.592534,-0.930305 54.592534,22.210255 39.023146,40.931364 13.831348,48.08219 -11.36045,40.931364 -26.929838,22.210255 -26.929838,-0.930305 -11.36045,-19.651414 13.831348,-26.80224"
+              transform="matrix(.686928 0 0 0.747819 31.25306 31.842868)"
+              fill="none"
+              stroke="#000"
+              stroke-width="4"
+              stroke-linejoin="bevel"
+            />
+            <text
+              xmlns="http://www.w3.org/2000/svg"
+              transform="translate(32.139294 44.814663)"
+              stroke-width="0"
+            >
+              <tspan y="0" font-weight="400" stroke-width="0">
+                <![CDATA[ 00 ]]>
+              </tspan>
+            </text>
+          </svg>
+          <button class="secondaryButton" type="button">roll</button>
+        </div>
+        <div class="diceEntry">
+          <h3>D20</h3>
+          <svg width="80" height="80" id="D20">
+            <polygon
+              xmlns="http://www.w3.org/2000/svg"
+              points="13.831348,-26.80224 50.948199,-5.165555 50.948199,38.107817 13.831348,59.744501 -23.285503,38.107817 -23.285503,-5.165555 13.831348,-26.80224"
+              transform="matrix(.727566 0 0 0.693267 29.936781 29.118833)"
+              fill="none"
+              stroke="#000"
+              stroke-width="4"
+              stroke-linejoin="bevel"
+            />
+            <text
+              xmlns="http://www.w3.org/2000/svg"
+              transform="translate(32.139294 44.814663)"
+              stroke-width="0"
+            >
+              <tspan y="0" font-weight="400" stroke-width="0">
+                <![CDATA[ 00 ]]>
+              </tspan>
+            </text>
+          </svg>
+          <button class="secondaryButton" type="button">roll</button>
+        </div>
+      </section>
+    </main>
+    <aside>
+      <h1>Saved Rolls</h1>
+      <ul id="savedRolls">
+        <li>your saved rolls will appear here</li>
+        <li>your saved rolls will appear here</li>
+        <li>your saved rolls will appear here</li>
+      </ul>
+      <button class="secondaryButton" type="button">Clear Session</button>
+    </aside>
+    <script src="./script.js"></script>
+  </body>
+</html>
