@@ -22,6 +22,15 @@ main{
 #resultTray {
     align-items: center;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+
+
+    p {
+        max-width: 300px;
+        overflow-wrap: break-word;
+    }
 }
 aside {
     display: flex;
