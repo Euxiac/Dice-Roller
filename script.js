@@ -1,12 +1,63 @@
 //========DATA=============================================================================
 let availableDice = { D4: 4, D6: 6, D8: 8, D10: 10, D12: 12, D20: 20 };
-
+let rollHistory = [];
+let uiRoller = {RollHistory: "roll some dice!", DiceTotal: "00", D4: " ", D6: " ", D8: " ", D10: " ", D12: " ", D20: " "}
+let savedRolls = [];
 
 //========FUNCTIONS========================================================================
+function updateUI()
+{
+    document.getElementById('resultTray').children[0].textContent = getValueByKey(uiRoller, 'RollHistory');
+    document.getElementById('resultTray').children[2].textContent = getValueByKey(uiRoller, 'DiceTotal');
+    document.getElementById('D4').children[1].textContent = getValueByKey(uiRoller, 'D4');
+    document.getElementById('D6').children[1].textContent = getValueByKey(uiRoller, 'D6');
+    document.getElementById('D8').children[1].textContent = getValueByKey(uiRoller, 'D8');
+    document.getElementById('D10').children[1].textContent = getValueByKey(uiRoller, 'D10');
+    document.getElementById('D12').children[1].textContent = getValueByKey(uiRoller, 'D12');
+    document.getElementById('D20').children[1].textContent = getValueByKey(uiRoller, 'D20');
+}
+
 function rollDice(dice)
 {
     let roll = generateRoll(dice);
-    document.getElementById(dice).children[1].textContent = parseLeading(roll);
+    uiRoller[dice]=parseLeading(roll)
+    updateRollHistory(dice, roll);
+    updateUI();
+}
+
+
+function updateRollHistory(dice, roll)
+{
+    //console.log(dice+"+"+roll);
+    rollHistory.push({[dice]:roll});
+    uiRoller['DiceTotal'] = Number(uiRoller['DiceTotal']) + Number(roll);
+    //console.log(rollHistory);
+    let formattedText = "";
+    
+    //im just going to cheat for the time being because this isnt working
+    if (uiRoller['RollHistory'] === "roll some dice!") uiRoller['RollHistory']="";
+    formattedText = uiRoller['RollHistory'] + dice + "=" + roll + ", ";
+
+
+
+    /*
+    const result = `${rollHistory[0].keys[0]}:${rollHistory[0][rollHistory[0].keys[0]]}`;
+    console.log(result);
+
+    //im just going to cheat for the time being because this isnt working
+    var idx = 0; // key2
+    let key = Object.keys(rollHistory)[idx];
+    let value = rollHistory[key];
+    console.log(value);
+    console.log(toString(value));
+*/
+    uiRoller['RollHistory']=formattedText;
+}
+
+function resetRolls()
+{
+    uiRoller = {RollHistory: "roll some dice!", DiceTotal: "00", D4: " ", D6: " ", D8: " ", D10: " ", D12: " ", D20: " "}
+    updateUI();
 }
 
 //Main roll function
@@ -110,3 +161,5 @@ function runGenerationTest ()
 }
 
 //runGenerationTest();
+
+updateUI();
