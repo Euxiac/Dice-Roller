@@ -7,6 +7,7 @@ let savedRolls = [];
 //========FUNCTIONS========================================================================
 function updateUI()
 {
+    calculateTotal()
     document.getElementById('resultTray').children[0].textContent = getValueByKey(uiRoller, 'RollHistory');
     document.getElementById('resultTray').children[2].textContent = getValueByKey(uiRoller, 'DiceTotal');
     document.getElementById('D4').children[1].textContent = getValueByKey(uiRoller, 'D4');
@@ -28,36 +29,44 @@ function rollDice(dice)
 
 function updateRollHistory(dice, roll)
 {
-    //console.log(dice+"+"+roll);
     rollHistory.push({[dice]:roll});
-    uiRoller['DiceTotal'] = Number(uiRoller['DiceTotal']) + Number(roll);
-    //console.log(rollHistory);
-    let formattedText = "";
+    formatRollHistory();
+    updateUI();
     
-    //im just going to cheat for the time being because this isnt working
-    if (uiRoller['RollHistory'] === "roll some dice!") uiRoller['RollHistory']="";
-    formattedText = uiRoller['RollHistory'] + dice + "=" + roll + ", ";
+}
 
+function calculateTotal(){
+    let total = 0;
+    for (let i = 0; i < rollHistory.length; i++)
+    {
+        let value = rollHistory[i][Object.keys(rollHistory[i])[0]];
+        total = total + value;
+    }
+    uiRoller['DiceTotal'] = total;
+}
 
-
-    /*
-    const result = `${rollHistory[0].keys[0]}:${rollHistory[0][rollHistory[0].keys[0]]}`;
-    console.log(result);
-
-    //im just going to cheat for the time being because this isnt working
-    var idx = 0; // key2
-    let key = Object.keys(rollHistory)[idx];
-    let value = rollHistory[key];
-    console.log(value);
-    console.log(toString(value));
-*/
+function formatRollHistory(){
+    if (uiRoller['RollHistory']==="roll some dice!") uiRoller['RollHistory']="";
+    let formattedText = "";
+    for (let i = 0; i < rollHistory.length; i++)
+        {
+            let key = Object.keys(rollHistory[i])[0];
+            let value = rollHistory[i][Object.keys(rollHistory[i])[0]];
+            formattedText = uiRoller['RollHistory'] + key + "=" + value+ ", ";
+        }
     uiRoller['RollHistory']=formattedText;
 }
 
 function resetRolls()
 {
     uiRoller = {RollHistory: "roll some dice!", DiceTotal: "00", D4: " ", D6: " ", D8: " ", D10: " ", D12: " ", D20: " "}
+    rollHistory = [];
     updateUI();
+}
+
+function clearSession()
+{
+    resetRolls();
 }
 
 //Main roll function
