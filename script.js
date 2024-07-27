@@ -1,16 +1,24 @@
-//document.getElementById("D4").children[1].textContent = "test"; //test getting the text inside the svg
-
+//========DATA=============================================================================
 let availableDice = { D4: 4, D6: 6, D8: 8, D10: 10, D12: 12, D20: 20 };
 
-//Main roll function
-function rollDice(min, dice) {
-    if (!checkExists(availableDice,dice)) return; //check if exists
 
+//========FUNCTIONS========================================================================
+function rollDice(dice)
+{
+    let roll = generateRoll(dice);
+    document.getElementById(dice).children[1].textContent = parseLeading(roll);
+}
+
+//Main roll function
+function generateRoll(dice) {
+    if (!checkExists(availableDice,dice)) return; //check if exists
+    const min = 1;
     const minCeiled = Math.ceil(min);
     const maxFloored = Math.floor(getValueByKey(availableDice, dice));
     return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled);
 }
 
+//========UTILITIES=========================================================================
 // grabs the value of a key in an array
 function getValueByKey(library, key) {
     if (checkExists) return library[key];
@@ -28,12 +36,23 @@ function checkExists(library, query) {
   } else return true;
 }
 
-// UNIT TEST
+function parseLeading(number)
+{
+    if(number< 10){
+        return "0" + number;
+        }
+        else{
+        return number;
+        }
+}
+
+//========UNIT TESTS=========================================================================
 //This test aims to test the generation of the dice over large numbers.
 function generationTest (dice, generations) //rolls dice generationsX and counts results per
 {
     console.log("!! starting generation test for " + generations + " of " +dice + " !!");
-    if (!checkExists(availableDice,dice)) return;
+    let pass = true;
+    if (!checkExists(availableDice,dice)) return false;
 
     ceiling = getValueByKey(availableDice, dice)+1;
     let testArr = []
@@ -42,7 +61,7 @@ function generationTest (dice, generations) //rolls dice generationsX and counts
     //roll generationsX of dice
     for (let i = 0; i < generations; i++)
     {
-        testArr.push(rollDice(1, dice));
+        testArr.push(generateRoll(dice));
     }
     console.log(testArr);
     console.log("generated "+ testArr.length + " rolls of " + dice)
@@ -62,17 +81,32 @@ function generationTest (dice, generations) //rolls dice generationsX and counts
         let probablityOfNum = counter/generations*100; //check the probability in %
         totalProbability.push(probablityOfNum); //add percentage to the totalProbability array
         console.log("there are "+counter+" of "+num+" in "+testArr.length+" generations. Probability of "+ probablityOfNum+ "%")
+
+        if (num===0 || num>=ceiling)
+            {
+                if (counter>0) pass=false;
+                console.log(num+ "" +counter+" "+pass);
+            }
     }
     
     //sum the total probability array
     let sum = totalProbability.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
     console.log("total probabilty at " + sum + "%");
+    if (totalProbability < 100) pass=false;
+
+    if (pass===true)return true;
+    else if (pass===false)return false;
 }
 
-console.log(generationTest("test",500));
-console.log(generationTest("D4",500));
-console.log(generationTest("D6",500));
-console.log(generationTest("D8",500));
-console.log(generationTest("D10",500));
-console.log(generationTest("D12",500));
-console.log(generationTest("D20",500));
+function runGenerationTest ()
+{
+    console.log("GENERATION TEST PASSED? = "+ generationTest("test",200));
+    console.log("GENERATION TEST PASSED? = "+generationTest("D4",200));
+    console.log("GENERATION TEST PASSED? = "+generationTest("D6",200));
+    console.log("GENERATION TEST PASSED? = "+generationTest("D8",200));
+    console.log("GENERATION TEST PASSED? = "+generationTest("D10",200));
+    console.log("GENERATION TEST PASSED? = "+generationTest("D12",200));
+    console.log("GENERATION TEST PASSED? = "+generationTest("D20",200));
+}
+
+//runGenerationTest();

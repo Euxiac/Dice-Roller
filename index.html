@@ -18,7 +18,7 @@
         <h2>00</h2>
 
         <span>
-          <button class="tertiaryButton" type="button">reset rolls</button>
+          <button class="tertiaryButton" type="button" onclick="resetRolls()">reset rolls</button>
         </span>
       </section>
       <section id="diceTray">
@@ -44,7 +44,7 @@
               </tspan>
             </text>
           </svg>
-          <button class="secondaryButton" type="button">roll</button>
+          <button class="secondaryButton" type="button" onclick="rollDice('D4')">roll</button>
         </div>
         <div class="diceEntry">
           <h3>D6</h3>
@@ -69,7 +69,7 @@
               </tspan>
             </text>
           </svg>
-          <button class="secondaryButton" type="button">roll</button>
+          <button class="secondaryButton" type="button" onclick="rollDice('D6')">roll</button>
         </div>
         <div class="diceEntry">
           <h3>D8</h3>
@@ -93,7 +93,7 @@
               </tspan>
             </text>
           </svg>
-          <button class="secondaryButton" type="button">roll</button>
+          <button class="secondaryButton" type="button"onclick="rollDice('D8')">roll</button>
         </div>
         <div class="diceEntry">
           <h3>D10</h3>
@@ -117,7 +117,7 @@
               </tspan>
             </text>
           </svg>
-          <button class="secondaryButton" type="button">roll</button>
+          <button class="secondaryButton" type="button" onclick="rollDice('D10')">roll</button>
         </div>
         <div class="diceEntry">
           <h3>D12</h3>
@@ -141,7 +141,7 @@
               </tspan>
             </text>
           </svg>
-          <button class="secondaryButton" type="button">roll</button>
+          <button class="secondaryButton" type="button" onclick="rollDice('D12')">roll</button>
         </div>
         <div class="diceEntry">
           <h3>D20</h3>
@@ -165,7 +165,7 @@
               </tspan>
             </text>
           </svg>
-          <button class="secondaryButton" type="button">roll</button>
+          <button class="secondaryButton" type="button" onclick="rollDice('D20')">roll</button>
         </div>
       </section>
     </main>
@@ -174,7 +174,7 @@
       <ul id="savedRolls">
         <li>your saved rolls will appear here</li>
       </ul>
-      <button class="secondaryButton" type="button">Clear Session</button>
+      <button class="secondaryButton" type="button" onclick="clearSession()">Clear Session</button>
     </aside>
     <script src="./script.js"></script>
   </body>
